@@ -9,23 +9,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.humor.content.SearchVO;
+
 @Controller
 public class InfoCtr {
 	@Autowired
 	private InfoSvc InfoSvc;
 	
 	@RequestMapping(value = "/cpu/list")
-	public String getCpuList(HttpServletRequest req, ModelMap modelMap) {
-		List<CpuVO> list =InfoSvc.getCpuInfo();
-		System.out.println(list.get(0).getInfoid());
+	public String getCpuList(HttpServletRequest req, SearchVO sv , ModelMap modelMap) {
+		List<CpuVO> list =InfoSvc.getCpuInfo(sv);
 		modelMap.addAttribute("list" , list);
 		return "info/Cpu";
 	}
 	
 	
 	@RequestMapping(value = "/gpu/list")
-	public String getGpuList(HttpServletRequest req, ModelMap modelMap) {
-		List<GpuVO> list =InfoSvc.getGpuInfo();
+	public String getGpuList(HttpServletRequest req, SearchVO sv, ModelMap modelMap) {
+		List<GpuVO> list =InfoSvc.getGpuInfo(sv);
 		modelMap.addAttribute("list" , list);
 		return "info/Gpu";
 	}

@@ -65,6 +65,7 @@
           	</div>
           </div>
         </div>
+         <c:set var="count" value="${li.count}"></c:set>
            </c:forEach>
       </div>
          <div class="col-12">
@@ -123,30 +124,13 @@
 				<form method="get">
 				<div>
 					<select name="f">
-						<option ${(param.f=="title")?"selected":""} value="title">제목</option>
-						<option ${(param.f=="writeid")?"selected":""} value="writeid">글쓴이</option>
-					</select> <input type="text" name="q" /><input type="hidden" name="boardid" value="${boardid}" /><!-- 왜인지 이걸 안넣어주면 오류남 --> <span><input type="submit" value="검색"></span>
+						<option ${(param.f=="name")?"selected":""} value="name">제목</option>
+					</select> <input type="text" name="q" /><input type="submit" value="검색">
 				</div>
 				</form>
       		</div>
       		<div class="col-2"></div>
       		<div class="col-1">
-      		<!-- 글쓰기 버튼 -->      		
-      		<%-- <c:if test="${userRank eq 'A'  }"> --%> <%-- <c:if test="${userRank!='G' && userRank!=''}">      			
-      				<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">Write  ! ${boardid}</button>
-      		</c:if> --%>
-	      	<c:if test="${userRank!='G' && userRank!=''}">
-	      		<c:choose >
-					<c:when test="${userRank eq'A'}">
-						<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">글쓰기</button>
-					</c:when>
-					<c:when test="${userRank eq'U'&&(boardid!=2 && boardid!=1)}">
-						<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">글쓰기</button>
-					</c:when>
-					<c:otherwise>
-					</c:otherwise>
-				</c:choose>
-			</c:if>
       		</div>
       	</div>
       </div>

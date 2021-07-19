@@ -11,4 +11,5 @@ public class GpuVO {
 	String stream;
 	String ram;
 	int infoid;
+	int count;
 }

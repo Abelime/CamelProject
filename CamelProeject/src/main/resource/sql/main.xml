@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 부품게시판 별 글 목록 -->
 	<select id="getInfoList" parameterType="Integer" resultType="com.web.humor.info.CpuVO">
-		select a.cpu_name as name, a.cpu_socket as socket, a.cpu_manufacture as manufacture, a.cpu_core as core, a.cpu_thread as thread, a.info_id,
+		select a.name, a.cpu_socket as socket, a.cpu_manufacture as manufacture, a.cpu_core as core, a.cpu_thread as thread, a.info_id,
 		(select info_name as infoname from info_master where info_id =  ${infoid})as infoname
 		from (select * 
 			from CPU_INFO
@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- gpu 정보  -->
 	<select id="getGpuInfo" parameterType="Integer" resultType="com.web.humor.info.GpuVO">
-		select gpu_name as name, gpu_value as value, gpu_manufacture as manufacture, gpu_stream as stream, gpu_ram as ram
+		select name, gpu_value as value, gpu_manufacture as manufacture, gpu_stream as stream, gpu_ram as ram
 		from GPU_INFO
 		where useFlag='Y'
 		order by id asc limit 3 offset 0

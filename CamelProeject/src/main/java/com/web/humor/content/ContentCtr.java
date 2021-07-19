@@ -24,7 +24,7 @@ public class ContentCtr {
 	@RequestMapping(value = "/board/list")
 	public String getList(HttpServletRequest req, ContentVO cv, SearchVO sv, ModelMap modelMap) {
 		String userRank;
-		//int boardid = Integer.parseInt(req.getParameter("boardid"));/* 없으면 오류남 */
+		// int boardid = Integer.parseInt(req.getParameter("boardid"));/* 없으면 오류남 */
 		int select = 0;
 		if (req.getSession().getAttribute("userRank") == null) {
 			userRank = "";
@@ -53,15 +53,10 @@ public class ContentCtr {
 		} else if (b == 0) {
 			select = 10;
 		}
-		
+
 		List<ContentVO> list = ContentSvc.getList(sv);
-		
-		
-		
-		/*
-		 * for(ContentVO a : list) { System.out.println("1111111111111111111 : "+
-		 * a.getTitlename()); } System.out.println("보드아이디 잘받아왔음?"+boardid);
-		 */
+
+
 		modelMap.addAttribute("list", list);
 		modelMap.addAttribute("sv", sv);
 		modelMap.addAttribute("userRank", userRank);
@@ -71,17 +66,16 @@ public class ContentCtr {
 		return "content/tables";
 	}
 
-	
-	  // 게시글 자세히 보기
-	  
-	  @RequestMapping(value = "/board/detail") 
-	  public String getDetail(HttpServletRequest req, ContentVO vo, ModelMap modelMap) {
-	  ContentSvc.getupcocnt(vo.getId());  
-	  ContentVO list = ContentSvc.getDetail(vo.getId());
-	  modelMap.addAttribute("nt", list); // req.setattribute
-	  modelMap.addAttribute("select", vo.getBoardid() + 1); return
-	  "content/Detail"; }
-	 
+	// 게시글 자세히 보기
+
+	@RequestMapping(value = "/board/detail")
+	public String getDetail(HttpServletRequest req, ContentVO vo, ModelMap modelMap) {
+		ContentSvc.getupcocnt(vo.getId());
+		ContentVO list = ContentSvc.getDetail(vo.getId());
+		modelMap.addAttribute("nt", list); // req.setattribute
+		modelMap.addAttribute("select", vo.getBoardid() + 1);
+		return "content/Detail";
+	}
 
 	// 게시판 글쓰기 form
 	@RequestMapping(value = "/board/regedit")
@@ -144,17 +138,12 @@ public class ContentCtr {
 
 		return "redirect: list";
 	}
-	
-	
-	//통계 페이지 이동
+
+	// 통계 페이지 이동
 	@RequestMapping(value = "board/statistic")
 	public String statistic(HttpServletRequest req, ModelMap modelMap) {
-		
 
 		return "other/statistic";
 	}
-	
-	
 
-	
 }

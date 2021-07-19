@@ -34,7 +34,7 @@ public class mainCtr {
 	private mainSvc mainSvc;
 
 	// 메인 화면
-	@RequestMapping(value = "main")
+	@RequestMapping(value = "/main")
 	public String MainListGroup(HttpServletRequest req, ModelMap modelMap) throws IOException {
 		
 		//크롤링

@@ -57,6 +57,7 @@
           	</div>
           </div>
         </div>
+        <c:set var="count" value="${li.count}"></c:set>
         </c:forEach>
       </div>
          <div class="col-12">
