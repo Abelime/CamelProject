@@ -1,9 +1,11 @@
 package com.web.humor.info;
 
+import com.web.humor.content.SearchVO;
+
 import lombok.Data;
 
 @Data
-public class GpuVO {
+public class GpuVO extends SearchVO {
 	String name;
 	String value;
 	String manufacture;

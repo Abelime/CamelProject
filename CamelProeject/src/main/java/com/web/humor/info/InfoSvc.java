@@ -14,34 +14,34 @@ public class InfoSvc {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<CpuVO> getCpuInfo(SearchVO sv) {
-		if (sv.getF() == null || sv.getF() == "") {
-			sv.setF("name");
+	public List<CpuVO> getCpuInfo(CpuVO cv) {
+		if (cv.getF() == null || cv.getF() == "") {
+			cv.setF("name");
 		}
-		if (sv.getP() == 0) {
-			sv.setP(0);
+		if (cv.getP() == 0) {
+			cv.setP(0);
 		} else {
-			sv.setP((sv.getP() - 1) * 10);
+			cv.setP((cv.getP() - 1) * 10);
 		}
-		if (sv.getQ() == null) {
-			sv.setQ("");
+		if (cv.getQ() == null) {
+			cv.setQ("");
 		}
 
-		return sqlSession.selectList("CpuList", sv);
+		return sqlSession.selectList("CpuList", cv);
 	}
 
-	public List<GpuVO> getGpuInfo(SearchVO sv) {
-		if (sv.getF() == null || sv.getF() == "") {
-			sv.setF("name");
+	public List<GpuVO> getGpuInfo(GpuVO gv) {
+		if (gv.getF() == null || gv.getF() == "") {
+			gv.setF("name");
 		}
-		if (sv.getP() == 0) {
-			sv.setP(0);
+		if (gv.getP() == 0) {
+			gv.setP(0);
 		} else {
-			sv.setP((sv.getP() - 1) * 10);
+			gv.setP((gv.getP() - 1) * 10);
 		}
-		if (sv.getQ() == null) {
-			sv.setQ("");
+		if (gv.getQ() == null) {
+			gv.setQ("");
 		}
-		return sqlSession.selectList("GpuList", sv);
+		return sqlSession.selectList("GpuList", gv);
 	}
 }

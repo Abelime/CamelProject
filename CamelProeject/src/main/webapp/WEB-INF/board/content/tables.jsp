@@ -118,8 +118,8 @@
       	<div class="row">
       		<div class="col-4">
       			<!-- 변수선언 -->
-      			<c:set var="page" value="${empty param.p?1:param.p}"></c:set>
-				<c:set var="startNum" value="${p-(p-1)%5}"></c:set>
+      		 	<c:set var = "page" value = "${(param.p==null)? 1: param.p}"/>
+           		<c:set var ="startNum" value = "${page-(page-1)%5}"/>    
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 						 
 				<!-- 현재 페이지 -->
@@ -134,7 +134,7 @@
 					<!-- 이전 페이지 -->
 					<li class="page-item">
 						<c:if test="${startNum > 1 }">
-							<a class="page-link" href="?p=${startNum-1}&q=${sv.q}&f=${sv.f}">Prev</a>
+							<a class="page-link" href="?boardid=${boardid}&p=${startNum-1}&q=${sv.q}&f=${sv.f}">Prev</a>
 						</c:if>
 						<c:if test="${startNum <= 1 }">
 							<a class="page-link" href="#" onclick="alert('첫 페이지입니다.');">Prev</a>
@@ -150,7 +150,7 @@
 							<c:set var="style" value="" />
 						</c:if>
 						<c:if test="${(startNum+i) <=lastNum }">
-							<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}">${startNum+i}</a>
+							<a style="${style}" class="page-link" href="?boardid=${boardid}&p=${startNum+i}&q=${sv.q}&f=${sv.f}">${startNum+i}</a>
 						</c:if>
 					</li>
 					</c:forEach>
@@ -158,7 +158,7 @@
 					
 					 <li class="page-item">
 					<c:if test="${startNum+5 <= lastNum }">
-						<a class="page-link" href="?p=${startNum+5}&q=${sv.q}&f=${sv.f}">Next</a>
+						<a class="page-link" href="?boardid=${boardid}&p=${startNum+5}&q=${sv.q}&f=${sv.f}">Next</a>
 					</c:if>
 					<c:if test="${startNum+5 >lastNum }">
 						<a class="page-link" href="#" onclick="alert('마지막 페이지입니다.');">Next</a>

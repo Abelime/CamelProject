@@ -9,4 +9,5 @@ public class SearchVO {
 	private	String f; //검색 조건 
 	private	String q; //검색어
 	private String rank;
+	private	int infoid;
 }

@@ -17,16 +17,16 @@ public class InfoCtr {
 	private InfoSvc InfoSvc;
 	
 	@RequestMapping(value = "/cpu/list")
-	public String getCpuList(HttpServletRequest req, SearchVO sv , ModelMap modelMap) {
-		List<CpuVO> list =InfoSvc.getCpuInfo(sv);
+	public String getCpuList(HttpServletRequest req, CpuVO cv , ModelMap modelMap) {
+		List<CpuVO> list =InfoSvc.getCpuInfo(cv);
 		modelMap.addAttribute("list" , list);
 		return "info/Cpu";
 	}
 	
 	
 	@RequestMapping(value = "/gpu/list")
-	public String getGpuList(HttpServletRequest req, SearchVO sv, ModelMap modelMap) {
-		List<GpuVO> list =InfoSvc.getGpuInfo(sv);
+	public String getGpuList(HttpServletRequest req, GpuVO gv, ModelMap modelMap) {
+		List<GpuVO> list =InfoSvc.getGpuInfo(gv);
 		modelMap.addAttribute("list" , list);
 		return "info/Gpu";
 	}

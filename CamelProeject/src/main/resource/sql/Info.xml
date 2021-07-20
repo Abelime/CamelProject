@@ -5,33 +5,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="comment">
-	<select id="CpuList" resultType="com.web.humor.info.CpuVO">
+	<select id="CpuList" parameterType="com.web.humor.info.CpuVO" resultType="com.web.humor.info.CpuVO">
 		select row.*,  cnt.count as count
 		  from(select info_id as infoid, name, cpu_socket as socket, cpu_manufacture as manufacture, cpu_core as core, cpu_thread as thread, baseclock, boosterclock, L3cache as cache, tdp
 				 from CPU_INFO 
 				where name like concat('%',#{q},'%')
 				  and useFlag ='Y' 
+			<if test="infoid == 0">
 			 and info_id in(1,2)
+			   </if>
+				<if test="infoid != 0">
+			 and info_id in(${infoid})
+			   </if>
+			 <if test="cpu_id !=null">
+			 	and cpu_id =#{cpu_id}
+			 </if>
 			    order by id asc  limit 9 offset ${p})row
 	   ,(select count(id) as count
 		   from CPU_INFO 
 		  where useFlag= 'Y'
-		   and info_id in(1,2)
+		  		<if test="infoid == 0">
+			 and info_id in(1,2)
+			   </if>
+				<if test="infoid != 0">
+			 and info_id in(${infoid})
+			   </if>
+			<if test="cpu_id !=null">
+			 	and cpu_id =#{cpu_id}
+			 </if>
               and name like concat('%',#{q},'%'))cnt 
  	</select>
  	
- 	<select id="GpuList" resultType="com.web.humor.info.GpuVO">
+ 	<select id="GpuList" parameterType="com.web.humor.info.GpuVO" resultType="com.web.humor.info.GpuVO">
 			select row.*,  cnt.count as count
 		  from(select info_id as infoid, name, gpu_value as value, gpu_manufacture as manufacture, gpu_clock as clock, gpu_stream as stream, gpu_ram as ram
 				 from 	GPU_INFO 
 				where name like concat('%',#{q},'%')
 				  and useFlag ='Y' 
 				  and info_id = 3
+				  <if test="value!=null">
+				   and gpu_value=#{value}
+				  </if>
 			    order by id asc  limit 6 offset ${p})row
 	   ,(select count(id) as count
 		   from GPU_INFO  
 		  where useFlag= 'Y'
 		    and info_id = 3
+		     	<if test="value!=null">
+				   and gpu_value=#{value}
+				  </if>
               and name like concat('%',#{q},'%'))cnt 
  	</select>
  	

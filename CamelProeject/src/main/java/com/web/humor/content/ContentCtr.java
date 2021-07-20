@@ -33,6 +33,7 @@ public class ContentCtr {
 		}
 		int b = sv.getBoardid();
 
+		
 		// aside acitve를 위한 값
 		if (b == 1) {
 			select = 2;

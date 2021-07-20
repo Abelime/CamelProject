@@ -35,6 +35,22 @@
     <c:import url="/etc/nav" />  
     <div class="container-fluid py-4">
       <div class="row">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+     	   <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3090'" class="btn btn-outline-success">RTX3090</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3080 Ti'" class="btn btn-outline-success">RTX3080Ti</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3080'" class="btn btn-outline-success">RTX3080</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3070 Ti'" class="btn btn-outline-success">RTX3070Ti</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3070'" class="btn btn-outline-success">RTX3070</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3060 Ti'" class="btn btn-outline-success">RTX3060Ti</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RTX 3060'" class="btn btn-outline-success">RTX3060</button>
+      </div>
+	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+     	  <button type="button" onclick="location.href='${root}/gpu/list?value=RX 6900 XT'" class="btn btn-outline-primary">RX6900XT </button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RX 6800 XT'" class="btn btn-outline-primary">RX6800(XT)</button>
+     	 <button type="button" onclick="location.href='${root}/gpu/list?value=RX 6700 XT'" class="btn btn-outline-primary">RX6700XT</button>
+      </div>
+      
+    
       <c:forEach var="li" items="${list }">
         <div class="col-md-6 mt-4">
           <div class="card">
@@ -64,13 +80,13 @@
       	<div class="row">
       		<div class="col-4">
       			<!-- 변수선언 -->
-      			<c:set var="page" value="${empty param.p?1:param.p}"></c:set>
-				<c:set var="startNum" value="${p-(p-1)%5}"></c:set>
+      			  <c:set var = "page" value = "${(param.p==null)? 1: param.p}"/>
+           		 <c:set var ="startNum" value = "${page-(page-1)%5}"/>    
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 						 
 				<!-- 현재 페이지 -->
 					<div>
-						<span>${page} </span> / ${lastNum} pages
+						<span>${page} </span> / ${lastNum} pages  
 					</div>
 			</div>
       		<div class="col-5">
@@ -96,18 +112,22 @@
 							<c:set var="style" value="" />
 						</c:if>
 						<c:if test="${(startNum+i) <=lastNum }">
+							<c:if test="${param.value==null }">
 							<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}">${startNum+i}</a>
+							</c:if>
+							<c:if test="${param.value!=null }">
+							<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}&value=${param.value}">${startNum+i}</a>
+							</c:if>
 						</c:if>
 					</li>
 					</c:forEach>
 					<!-- 다음 페이지 -->
-					
 					 <li class="page-item">
 					<c:if test="${startNum+5 <= lastNum }">
 						<a class="page-link" href="?p=${startNum+5}&q=${sv.q}&f=${sv.f}">Next</a>
 					</c:if>
 					<c:if test="${startNum+5 >lastNum }">
-						<a class="page-link" href="#" onclick="alert('마지막 페이지입니다.');">Next</a>
+						<a class="page-link"s href="#" onclick="alert('마지막 페이지입니다.');">Next</a>
 					</c:if>
 					</li>
 		 			</ul>
@@ -116,30 +136,13 @@
 				<form method="get">
 				<div>
 					<select name="f">
-						<option ${(param.f=="title")?"selected":""} value="title">제목</option>
-						<option ${(param.f=="writeid")?"selected":""} value="writeid">글쓴이</option>
-					</select> <input type="text" name="q" /><input type="hidden" name="boardid" value="${boardid}" /><!-- 왜인지 이걸 안넣어주면 오류남 --> <span><input type="submit" value="검색"></span>
+						<option ${(param.f=="name")?"selected":""} value="name">제목</option>
+					</select> <input type="text" name="q" /><input type="submit" value="검색">
 				</div>
 				</form>
       		</div>
       		<div class="col-2"></div>
       		<div class="col-1">
-      		<!-- 글쓰기 버튼 -->      		
-      		<%-- <c:if test="${userRank eq 'A'  }"> --%> <%-- <c:if test="${userRank!='G' && userRank!=''}">      			
-      				<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">Write  ! ${boardid}</button>
-      		</c:if> --%>
-	      	<c:if test="${userRank!='G' && userRank!=''}">
-	      		<c:choose >
-					<c:when test="${userRank eq'A'}">
-						<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">글쓰기</button>
-					</c:when>
-					<c:when test="${userRank eq'U'&&(boardid!=2 && boardid!=1)}">
-						<button class="btn btn-primary" type="button" onclick="location.href='regedit?boardid=${boardid}'">글쓰기</button>
-					</c:when>
-					<c:otherwise>
-					</c:otherwise>
-				</c:choose>
-			</c:if>
       		</div>
       	</div>
       </div>

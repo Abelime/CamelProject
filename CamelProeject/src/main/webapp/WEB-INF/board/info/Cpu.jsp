@@ -35,6 +35,18 @@
     <c:import url="/etc/nav" />  
     <div class="container-fluid py-4">
       <div class="row">
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <button type="button" onclick="location.href='${root}/cpu/list?infoid=1'" class="btn btn-outline-info" >인텔</button>
+    <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=i11'" class="btn btn-outline-info"  >인텔 11세대</button>
+    <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=i10'" class="btn btn-outline-info">인텔 10세대</button>
+    <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=i9'" class="btn btn-outline-info">인텔 9세대</button>
+	</div>
+	 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <button type="button" onclick="location.href='${root}/cpu/list?infoid=2'" class="btn btn-outline-warning" >AMD</button>
+    <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=A4'" class="btn btn-outline-warning">라이젠 4세대</button>
+    <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=A3'" class="btn btn-outline-warning">라이젠 3세대</button>
+     <button type="button" onclick="location.href='${root}/cpu/list?cpu_id=A2'" class="btn btn-outline-warning">라이젠 2세대</button>
+	</div>
            <c:forEach var="li" items="${list}">
         <div class="col-md-4 mt-4">
           <div class="card">
@@ -72,13 +84,13 @@
       	<div class="row">
       		<div class="col-4">
       			<!-- 변수선언 -->
-      			<c:set var="page" value="${empty param.p?1:param.p}"></c:set>
-				<c:set var="startNum" value="${p-(p-1)%5}"></c:set>
+      			  <c:set var = "page" value = "${(param.p==null)? 1: param.p}"/>
+           		 <c:set var ="startNum" value = "${page-(page-1)%5}"/>    
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 						 
 				<!-- 현재 페이지 -->
 					<div>
-						<span>${page} </span> / ${lastNum} pages
+						<span>${page} </span> / ${lastNum} pages  
 					</div>
 			</div>
       		<div class="col-5">
@@ -104,12 +116,21 @@
 							<c:set var="style" value="" />
 						</c:if>
 						<c:if test="${(startNum+i) <=lastNum }">
+							<c:if test="${param.infoid==null && param.cpu_id==null}">
 							<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}">${startNum+i}</a>
+							</c:if>
+							<c:if test="${param.infoid!=null || param.cpu_id!=null}">
+								<c:if test="${param.infoid!=null }">
+								<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}&infoid=${param.infoid}">${startNum+i}</a>
+								</c:if>
+								<c:if test="${param.cpu_id!=null }">
+									<a style="${style}" class="page-link" href="?p=${startNum+i}&q=${sv.q}&f=${sv.f}&cpu_id=${param.cpu_id}">${startNum+i}</a>
+								</c:if>
+							</c:if>
 						</c:if>
 					</li>
 					</c:forEach>
 					<!-- 다음 페이지 -->
-					
 					 <li class="page-item">
 					<c:if test="${startNum+5 <= lastNum }">
 						<a class="page-link" href="?p=${startNum+5}&q=${sv.q}&f=${sv.f}">Next</a>
@@ -129,7 +150,10 @@
 				</div>
 				</form>
       		</div>
-      		<div class="col-2"></div>
+      		<div class="col-2">   
+      		
+
+			</div>
       		<div class="col-1">
       		</div>
       	</div>
