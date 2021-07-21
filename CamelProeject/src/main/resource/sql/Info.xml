@@ -4,7 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="comment">
+<mapper namespace="info">
 	<select id="CpuList" parameterType="com.web.humor.info.CpuVO" resultType="com.web.humor.info.CpuVO">
 		select row.*,  cnt.count as count
 		  from(select info_id as infoid, name, cpu_socket as socket, cpu_manufacture as manufacture, cpu_core as core, cpu_thread as thread, baseclock, boosterclock, L3cache as cache, tdp

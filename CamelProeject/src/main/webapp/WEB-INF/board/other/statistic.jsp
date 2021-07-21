@@ -404,14 +404,14 @@ window.onload = function() {
     new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["BaseClock", "BoosterClock", "core", "thread"],
         datasets: [{
           label: "Sales",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
           backgroundColor: "#fff",
-          data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+          data: [450, 200, 100, 220],
           maxBarThickness: 6
         }, ],
       },
@@ -474,7 +474,7 @@ window.onload = function() {
     new Chart(ctx2, {
       type: "line",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["BaseClock", "BoosterClock", "core", "thread"],
         datasets: [{
             label: "Mobile apps",
             tension: 0.4,
@@ -483,7 +483,7 @@ window.onload = function() {
             borderColor: "#cb0c9f",
             borderWidth: 3,
             backgroundColor: gradientStroke1,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            data: [50, 40, 300, 220],
             maxBarThickness: 6
 
           },
@@ -495,7 +495,7 @@ window.onload = function() {
             borderColor: "#3A416F",
             borderWidth: 3,
             backgroundColor: gradientStroke2,
-            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+            data: [30, 90, 40, 140],
             maxBarThickness: 6
 
           },

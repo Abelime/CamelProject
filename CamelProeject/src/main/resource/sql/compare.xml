@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="compare">
+	
+	<select id="getCpuList" resultType="com.web.humor.info.CpuVO">
+	select id, name
+	from CPU_INFO 
+ 	</select>
+ 	
+ 	<select id="getGpuList" resultType="com.web.humor.info.GpuVO">
+	select id, name
+	from GPU_INFO 
+ 	</select>
+ 	
+ 	<select id="getCpuInfo" parameterType="Integer" resultType="com.web.humor.info.CpuVO">
+	select id, name, cpu_socket as socket, cpu_manufacture as manufacture, cpu_core as core, cpu_thread as thread, baseclock, boosterclock, L3cache as cache, tdp 
+	from CPU_INFO 
+	where id=${compare}
+	and useFlag='Y' 
+ 	</select>
+ 	
+ 	<select id="GpuCompare" parameterType="Integer" resultType="com.web.humor.info.GpuVO">
+	select id, name, gpu_value as value, gpu_manufacture as manufacture, gpu_clock as clock ,gpu_stream as stream, gpu_ram as ram
+	from GPU_INFO
+	where useFlag='Y'
+	and id=${compare}
+ 	</select>
+</mapper>

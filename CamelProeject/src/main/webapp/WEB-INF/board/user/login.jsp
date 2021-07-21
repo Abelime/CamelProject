@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg  blur blur-rounded top-0  z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
             <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../index.jsp">
-              <img src="${root}/img/board/BBSlogo2.PNG" width="70px"></a>
+              <img src="${root}/img/main2.png" width="100px"></a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -77,7 +77,7 @@
     </div>
   </div>
   <section>
-  <video id="video" src="../img/loginvideo/Baby - 76124.mp4" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+  <video id="video" src="../img/loginvideo/camelvideo.mp4" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
 </video>
       <div class="container">
         <div class="row">

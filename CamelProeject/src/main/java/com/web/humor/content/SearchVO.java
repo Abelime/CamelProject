@@ -10,4 +10,5 @@ public class SearchVO {
 	private	String q; //검색어
 	private String rank;
 	private	int infoid;
+	private int id;
 }
