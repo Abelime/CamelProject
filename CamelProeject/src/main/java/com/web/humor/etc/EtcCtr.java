@@ -29,7 +29,6 @@ public class EtcCtr {
 			userRank=req.getSession().getAttribute("userRank").toString();
 		}
 		
-		
 		List<MenuVO> list = EtcSvc.getMenuList(userRank);
 		List<MenuVO> InfoList = EtcSvc.getInfoMenuList(userRank);
 		modelMap.addAttribute("menu", list);

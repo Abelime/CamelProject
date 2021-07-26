@@ -35,21 +35,8 @@
           		공지사항
           	</c:if>
           	<c:if test="${select==3}">
-          		유머게시판
+          		CPU/GPU 게시판
           	</c:if>
-          	<c:if test="${select==4}">
-          		축구게시판
-          	</c:if>
-          	<c:if test="${select==5}">
-          		영화게시판
-          	</c:if>
-          	<c:if test="${select==6}">
-          		Billing
-          	</c:if>
-          	<c:if test="${select==7}">
-          		profile
-          	</c:if>
-            
             </li>
           </ol>
           <h6 class="font-weight-bolder mb-0">
@@ -60,20 +47,8 @@
           		공지사항
           	</c:if>
           	<c:if test="${select==3}">
-          		유머게시판
+          		CPU/GPU 게시판
           	</c:if>          	
-          	<c:if test="${select==4}">
-          		축구게시판
-          	</c:if>
-          	<c:if test="${select==5}">
-          		영화게시판
-          	</c:if>
-          	<c:if test="${select==6}">
-          		Billing
-          	</c:if>
-          	<c:if test="${select==7}">
-          		profile
-          	</c:if>
           </h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">

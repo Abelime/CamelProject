@@ -39,22 +39,7 @@ public class ContentCtr {
 			select = 2;
 		} else if (b == 2) {
 			select = 3;
-		} else if (b == 3) {
-			select = 4;
-		} else if (b == 4) {
-			select = 5;
-		} else if (b == 5) {
-			select = 6;
-		} else if (b == 6) {
-			select = 7;
-		} else if (b == 7) {
-			select = 8;
-		} else if (b == 8) {
-			select = 9;
-		} else if (b == 0) {
-			select = 10;
-		}
-
+		} 
 		List<ContentVO> list = ContentSvc.getList(sv);
 
 
